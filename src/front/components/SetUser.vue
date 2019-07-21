@@ -36,6 +36,9 @@ export default class TypeBox extends Vue {
       }
       store.commit('setCurrentUser', user)
       socket.emit('new_user', user)
+
+      const typeBox = document.querySelector("#typebox") as HTMLElement
+      setTimeout(() => typeBox.focus(), 10)
     }
   }
 }

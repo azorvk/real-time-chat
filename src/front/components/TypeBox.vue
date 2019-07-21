@@ -1,8 +1,8 @@
 <template lang="pug">
-v-card.typebox 
+v-card.typebox-container
     form(@submit='sendMessage')
         v-card-text
-            input(placeholder='Type your message...', v-model='message')  
+            input#typebox(placeholder='Type your message...', v-model='message')  
 </template>
 
 <script lang="ts">
@@ -35,20 +35,20 @@ export default class TypeBox extends Vue {
 </script>
 
 <style scoped>
-.typebox {
+.typebox-container {
   position: absolute;
-  bottom: 0;
+  bottom: 15px;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-  border-radius: 5px 5px 0 0;
+  border-radius: 9px;
 }
 
 input {
   width: 100%;
-  height: 30px;
+  height: 15px;
 }
 
 input:focus {

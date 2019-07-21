@@ -28,9 +28,7 @@ export default class Messages extends Vue {
   @Watch('messages')
   onMessagesChanged() {
     const messagesBox = document.querySelector<HTMLElement>("#messages > div") as HTMLElement
-    setTimeout(function () {
-      messagesBox.scrollTop = messagesBox.clientHeight + 900000
-    }, 10);
+    setTimeout(() => messagesBox.scrollTop = messagesBox.clientHeight + 900000, 10)
   }
 }
 </script>
