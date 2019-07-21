@@ -1,11 +1,11 @@
 {
   "name": "chat",
   "version": "1.0.0",
-  "description": "",
-  "author": "",
+  "description": "realt-time chat built with vue & socket.io",
+  "author": "azorvk",
   "scripts": {
     "dev-front": "npm run clean && vue-cli-service serve",
-    "build": "npm run clean && vue-cli-service build && tsc",
+    "build": "npm run clean && vue-cli-service build && tsc -p tsconfig.server.json",
     "clean": "rimraf dist",
     "dev-server": "npm run clean && tsc-watch -p tsconfig.server.json --onSuccess \"node dist/server\"",
     "dev": "npm run clean && vue-cli-service build && tsc-watch -p tsconfig.server.json --onSuccess \"node dist/server\""

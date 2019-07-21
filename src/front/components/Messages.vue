@@ -35,7 +35,7 @@ export default class Messages extends Vue {
 
 <style>
 #messages {
-  height: 75vh;
+  height: calc(100vh - 180px);
   overflow: auto;
 }
 
