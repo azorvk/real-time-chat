@@ -15,9 +15,12 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import { store } from '~/front/store'
 import { socket } from '~/front/socketio'
 import axios from 'axios'
+import { NotificationType } from '~/common/Notification'
+import { User } from '~/common/User';
 
-socket.on('new_user', function (user: any) {
+socket.on('new_user', function (user: User) {
   store.commit('addOnlineUser', user)
+  store.commit('notify', { message: `${user.username} joined.`, type: NotificationType.Info })
 })
 
 socket.on('user_left', function (socketId: any) {

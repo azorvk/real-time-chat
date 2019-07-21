@@ -1,22 +1,29 @@
 <template lang="pug">
-v-card.typebox-container
+v-card.typebox-container(@click='focusTypeBox')
     form(@submit='sendMessage')
         v-card-text
-            input#typebox(placeholder='Type your message...', v-model='message')  
+            input#typebox(autocomplete='off', placeholder='Type your message...', v-model='message')  
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { store } from '~/front/store'
 import { socket } from '~/front/socketio'
-import { Message } from '~/common/Message';
+import { Message } from '~/common/Message'
+import { NotificationType } from '~/common/Notification'
 
 @Component
 export default class TypeBox extends Vue {
   message = ''
 
+  focusTypeBox() {
+    const typebox = document.querySelector('#typebox') as HTMLElement
+    typebox.focus()
+  }
+
   sendMessage(e: any) {
     e.preventDefault()
+
     const currentUser = store.state.currentUser
     if (currentUser && this.message != '') {
       const message: Message = {
@@ -27,6 +34,8 @@ export default class TypeBox extends Vue {
 
       store.commit('insertMessage', message)
       socket.emit('new_message', message)
+    } else {
+      store.commit('notify', { message: 'Message cannot be blank.', type: NotificationType.Error })
     }
 
     this.message = ''

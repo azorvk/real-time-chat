@@ -1,16 +1,18 @@
 <template lang="pug">
   #app
     Chat
+    Notification
 
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import Chat from '~components/Chat.vue';
+import { Component, Vue } from 'vue-property-decorator'
+import Chat from '~components/Chat.vue'
+import Notification from '~components/Notification.vue'
 
 @Component({
   components: {
-    Chat,
+    Chat, Notification
   },
 })
 export default class App extends Vue { }
