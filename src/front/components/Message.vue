@@ -1,7 +1,7 @@
 <template lang="pug">
 div
     .avatar-container
-      avatar.avatar(:username='message.author.username')
+      avatar.avatar(:size='40', :username='message.author.username')
     .msg 
       .author.grey--text.text--lighten-5 {{ message.author.username }}
       .timestamp.grey--text {{ message.time }}
@@ -30,13 +30,14 @@ export default class Message extends Vue {
 
 <style scoped>
 .separator {
-  margin: 20px 0;
+  margin: 10px 0;
   height: 1px;
 }
 
 .avatar-container {
+  position: absolute;
   display: inline-block;
-  width: 60px;
+  width: 50px;
 }
 
 .author {
@@ -47,7 +48,8 @@ export default class Message extends Vue {
 
 .msg {
   display: inline-block;
-  width: calc(100% - 62px);
+  margin-left: 55px;
+  width: calc(100% - 55px);
 }
 
 .content {
@@ -57,7 +59,7 @@ export default class Message extends Vue {
 }
 
 .timestamp {
-  font-size: 11px;
+  font-size: 10.5px;
   margin-left: 5px;
   display: inline-block;
 }

@@ -1,6 +1,6 @@
 <template lang="pug">
 v-card.typebox-container(@click='focusTypeBox')
-    form(@submit='sendMessage')
+    form(@submit.prevent='sendMessage')
         v-card-text
             input#typebox(autocomplete='off', placeholder='Type your message...', v-model='message')  
 </template>
@@ -21,9 +21,7 @@ export default class TypeBox extends Vue {
     typebox.focus()
   }
 
-  sendMessage(e: any) {
-    e.preventDefault()
-
+  sendMessage() {
     const currentUser = store.state.currentUser
     if (currentUser && this.message != '') {
       const message: Message = {
